@@ -6,7 +6,7 @@ namespace TaskScheduler.Example.Tasks
     {
         public void Execute(PrintArgsTaskArguments args)
         {
-            Console.WriteLine(args.Message + DateTime.Now);
+            Console.WriteLine(args.Message + " " + DateTime.Now);
         }
     }
 }
