@@ -35,6 +35,7 @@
             });
 
             // After 2 AM, on the same day, task should not execute again
+            _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
             _taskScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
 
