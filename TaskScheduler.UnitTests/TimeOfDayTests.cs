@@ -18,9 +18,10 @@
             var taskA = new TestTask();
             var taskAArguments = new TestTaskArguments();
 
+            // Current time is Midnight
             _taskScheduler.ScheduleTimeOfDayTask(taskA, taskAArguments, new TimeSpan(2, 0, 0)); // Schedule for 2 AM
 
-            // Before 2 AM, task should not execute
+            // Set time to 1 AM, task should not execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
             _taskScheduler.RunSchedulerStep();
             Assert.That(taskA.HasExecuted, Is.False);
@@ -34,13 +35,13 @@
                 Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
             });
 
-            // After 2 AM, on the same day, task should not execute again
+            // At 3 AM on the same day, task should not execute again
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
             _taskScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
 
             // On the next day at 2 AM, the task should execute again
-            _mockTimeService.AdvanceTime(TimeSpan.FromHours(24));
+            _mockTimeService.AdvanceTime(TimeSpan.FromHours(23));
             _taskScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(2));
         }
