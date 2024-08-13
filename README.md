@@ -14,6 +14,7 @@ This repository contains a simple yet powerful task scheduling system implemente
 ### Prerequisites
 
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+      For Example project
 
 ### Installation
 
