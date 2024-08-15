@@ -1,4 +1,4 @@
-﻿namespace TaskScheduler.UnitTests
+﻿namespace ChronoScheduler.UnitTests
 {
     public class MockTimeService(DateTime currentTime) : ITimeService
     {

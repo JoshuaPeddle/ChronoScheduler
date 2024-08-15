@@ -1,4 +1,4 @@
-﻿namespace TaskScheduler.Example.Tasks
+﻿namespace ChronoScheduler.Example.Tasks
 {
     internal class PrintArgsTask : ITask<PrintArgsTaskArguments>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskScheduler.Tasks
+namespace ChronoScheduler.Tasks
 {
     internal class RecurringIntervalTask<TArgs> : TimedTask where TArgs : class
     {

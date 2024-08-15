@@ -1,16 +1,16 @@
 
-namespace TaskScheduler.UnitTests
+namespace ChronoScheduler.UnitTests
 {
     public class RecurringIntervalTests
     {
-        private TaskScheduler _taskScheduler;
+        private ChronoScheduler _chronoScheduler;
         private MockTimeService _mockTimeService;
 
         [SetUp]
         public void Setup()
         {
             _mockTimeService = new MockTimeService(new DateTime(2024, 1, 1, 0, 0, 0));
-            _taskScheduler = new TaskScheduler(_mockTimeService);
+            _chronoScheduler = new ChronoScheduler(_mockTimeService);
         }
 
         [Test]
@@ -20,15 +20,15 @@ namespace TaskScheduler.UnitTests
             var taskA = new TestTask();
             var taskAArguments = new TestTaskArguments();
 
-            _taskScheduler.AddRecurringIntervalTask(taskA, taskAArguments, interval);
+            _chronoScheduler.AddRecurringIntervalTask(taskA, taskAArguments, interval);
 
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
 
             Assert.That(taskA.HasExecuted, Is.False);
 
             _mockTimeService.AdvanceTime(TimeSpan.FromMinutes(1));
 
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.Multiple(() =>
             {
                 Assert.That(taskA.HasExecuted, Is.True);
@@ -43,15 +43,15 @@ namespace TaskScheduler.UnitTests
             var taskA = new TestTask();
             var taskAArguments = new TestTaskArguments();
 
-            _taskScheduler.AddRecurringIntervalTask(taskA, taskAArguments, interval);
+            _chronoScheduler.AddRecurringIntervalTask(taskA, taskAArguments, interval);
 
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
 
             Assert.That(taskA.HasExecuted, Is.False);
 
             _mockTimeService.AdvanceTime(TimeSpan.FromMinutes(1));
 
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.Multiple(() =>
             {
                 Assert.That(taskA.HasExecuted, Is.True);
@@ -59,7 +59,7 @@ namespace TaskScheduler.UnitTests
             });
 
             _mockTimeService.AdvanceTime(TimeSpan.FromMinutes(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.Multiple(() =>
             {
                 Assert.That(taskA.HasExecuted, Is.True);

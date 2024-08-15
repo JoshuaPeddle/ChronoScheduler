@@ -1,15 +1,15 @@
-﻿namespace TaskScheduler.UnitTests
+﻿namespace ChronoScheduler.UnitTests
 {
     public class DailyTimeWindowTests
     {
-        private TaskScheduler _taskScheduler;
+        private ChronoScheduler _chronoScheduler;
         private MockTimeService _mockTimeService;
 
         [SetUp]
         public void Setup()
         {
             _mockTimeService = new MockTimeService(new DateTime(2024, 1, 1, 0, 0, 0));
-            _taskScheduler = new TaskScheduler(_mockTimeService);
+            _chronoScheduler = new ChronoScheduler(_mockTimeService);
         }
 
         [Test]
@@ -19,16 +19,16 @@
             var taskAArguments = new TestTaskArguments();
 
             // Current time is Midnight
-            _taskScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
+            _chronoScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
 
             // Set time to 1 AM, task should not execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.HasExecuted, Is.False);
 
             // At 2 AM, task should execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.Multiple(() =>
             {
                 Assert.That(taskA.HasExecuted, Is.True);
@@ -37,12 +37,12 @@
 
             // At 3 AM on the same day, task should not execute again
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
 
             // On the next day at 2 AM, the task should execute again
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(23));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(2));
         }
 
@@ -53,16 +53,16 @@
             var taskAArguments = new TestTaskArguments();
 
             // Current time is Midnight
-            _taskScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
+            _chronoScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
 
             // Set time to 1 AM, task should not execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.HasExecuted, Is.False);
 
             // At 5 AM on the same day, task should not execute 
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
         }
 
@@ -73,16 +73,16 @@
             var taskAArguments = new TestTaskArguments();
 
             // Current time is Midnight
-            _taskScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
+            _chronoScheduler.AddDailyTimeWindowTask(taskA, taskAArguments, new TimeSpan(2, 0, 0), new TimeSpan(4, 0, 0)); // Schedule for 2 AM
 
             // Set time to 1 AM, task should not execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.HasExecuted, Is.False);
 
             // At 2 AM, task should execute
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.Multiple(() =>
             {
                 Assert.That(taskA.HasExecuted, Is.True);
@@ -91,7 +91,7 @@
 
             // On the next day at 2 AM, the task should execute again
             _mockTimeService.AdvanceTime(TimeSpan.FromHours(24));
-            _taskScheduler.RunSchedulerStep();
+            _chronoScheduler.RunSchedulerStep();
             Assert.That(taskA.ExecutionCount, Is.EqualTo(2));
         }
     }

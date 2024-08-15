@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using TaskScheduler.Tasks;
+using ChronoScheduler.Tasks;
 
-namespace TaskScheduler
+namespace ChronoScheduler
 {
-    public class TaskScheduler
+    public class ChronoScheduler
     {
         private readonly List<TimedTask> _tasks = new List<TimedTask>();
         private readonly ITimeService _timeService;
         private readonly int _tickInterval;
 
-        public TaskScheduler(ITimeService timeService, int tickInterval = 1000)
+        public ChronoScheduler(ITimeService timeService, int tickInterval = 1000)
         {
             _timeService = timeService;
             _tickInterval = tickInterval;

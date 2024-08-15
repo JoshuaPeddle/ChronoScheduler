@@ -1,6 +1,6 @@
-# TaskScheduler
+# ChronoScheduler
 
-This repository contains a simple yet powerful task scheduling system implemented in C#. The `TaskScheduler` class allows for the scheduling of tasks to be executed at specific intervals or at a specific time of day. It is designed for long-running processes and provides a flexible interface for defining task behavior.
+This repository contains a simple yet powerful task scheduling system implemented in C#. The `ChronoScheduler` class allows for the scheduling of tasks to be executed at specific intervals or at a specific time of day. It is designed for long-running processes and provides a flexible interface for defining task behavior.
 
 ## Features
 
@@ -21,8 +21,8 @@ This repository contains a simple yet powerful task scheduling system implemente
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/your-username/TaskScheduler.git
-    cd TaskScheduler
+    git clone https://github.com/your-username/ChronoScheduler.git
+    cd ChronoScheduler
     ```
 
 2. Build the project:
@@ -34,17 +34,17 @@ This repository contains a simple yet powerful task scheduling system implemente
 3. Run the example:
 
     ```sh
-    dotnet run --project TaskScheduler.Example
+    dotnet run --project ChronoScheduler.Example
     ```
 
 ### Usage
 
-The `TaskScheduler` class is the core of this scheduling system. Below is a brief explanation of how to use it.
+The `ChronoScheduler` class is the core of this scheduling system. Below is a brief explanation of how to use it.
 
-1. **Create the Scheduler**: Instantiate the `TaskScheduler` with a time service.
+1. **Create the Scheduler**: Instantiate the `ChronoScheduler` with a time service.
 
     ```csharp
-    var taskScheduler = new TaskScheduler.TaskScheduler(new RealTimeService());
+    var taskScheduler = new ChronoScheduler.ChronoScheduler(new RealTimeService());
     ```
 
 2. **Schedule Tasks**:
@@ -77,7 +77,7 @@ The `TaskScheduler` class is the core of this scheduling system. Below is a brie
 
 ### Example Project
 
-An example project is provided in the `TaskScheduler.Example` namespace, demonstrating how to schedule and execute tasks using the `TaskScheduler` class.
+An example project is provided in the `ChronoScheduler.Example` namespace, demonstrating how to schedule and execute tasks using the `ChronoScheduler` class.
 
 ### Extending the Scheduler
 

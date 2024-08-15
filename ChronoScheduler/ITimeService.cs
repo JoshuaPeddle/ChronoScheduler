@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskScheduler
+namespace ChronoScheduler
 {
     public interface ITimeService
     {

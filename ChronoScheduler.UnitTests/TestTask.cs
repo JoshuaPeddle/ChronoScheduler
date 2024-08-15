@@ -1,5 +1,5 @@
 ﻿
-namespace TaskScheduler.UnitTests
+namespace ChronoScheduler.UnitTests
 {
     internal class TestTaskArguments { }
 
