@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TaskScheduler.Tasks
 {
@@ -10,7 +8,6 @@ namespace TaskScheduler.Tasks
         private readonly TArgs _taskArguments;
         private readonly TimeSpan _startTime;
         private readonly TimeSpan _endTime;
-        private bool _isFirstRun = true;
         private DateTime _lastExecutionDate;
 
         public DailyTimeWindowTask(ITask<TArgs> task, TArgs taskArguments, TimeSpan startTime, TimeSpan endTime)
@@ -24,17 +21,10 @@ namespace TaskScheduler.Tasks
 
         public override bool ShouldExecute(DateTime currentTime)
         {
-            if (_isFirstRun)
-            {
-                _isFirstRun = false;
-                return currentTime.TimeOfDay >= _startTime && currentTime.TimeOfDay <= _endTime;
-            }
-            _isFirstRun = false;
-
-            bool isAfterTimeOfDay = currentTime.TimeOfDay >= _startTime && currentTime.TimeOfDay <= _endTime;
+            bool isWithinWindow = currentTime.TimeOfDay >= _startTime && currentTime.TimeOfDay <= _endTime;
             bool isNewDay = _lastExecutionDate.Date < currentTime.Date;
 
-            return isAfterTimeOfDay && isNewDay;
+            return isWithinWindow && isNewDay;
         }
 
         public override void Execute(DateTime currentTime)

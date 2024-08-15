@@ -22,11 +22,6 @@ namespace TaskScheduler
             _tasks.Add(new RecurringIntervalTask<TArgs>(task, taskArguments, interval, _timeService));
         }
 
-        public void AddDailyFixedTimeTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeSpan timeOfDay) where TArgs : class
-        {
-            _tasks.Add(new DailyFixedTimeTask<TArgs>(task, taskArguments, timeOfDay));
-        }
-
         public void AddDailyTimeWindowTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeSpan startTime, TimeSpan endTime) where TArgs : class
         {
             _tasks.Add(new DailyTimeWindowTask<TArgs>(task, taskArguments, startTime, endTime));

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace TaskScheduler.Example.Tasks
+﻿namespace TaskScheduler.Example.Tasks
 {
     internal class PrintArgsTask : ITask<PrintArgsTaskArguments>
     {
