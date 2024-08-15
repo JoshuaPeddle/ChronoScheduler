@@ -2,7 +2,10 @@
 
 # ChronoScheduler
 
-![NuGet Version](https://img.shields.io/nuget/v/ChronoScheduler)
+[![NuGet Version](https://img.shields.io/nuget/v/ChronoScheduler)](https://www.nuget.org/packages/ChronoScheduler)
+
+
+
 
 
 This repository contains a simple yet powerful task scheduling system implemented in C#. The `ChronoScheduler` class allows for the scheduling of tasks to be executed at specific intervals or at a specific time of day. It is designed for long-running processes and provides a flexible interface for defining task behavior.
