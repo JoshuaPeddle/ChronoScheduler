@@ -44,7 +44,7 @@ The `ChronoScheduler` class is the core of this scheduling system. Below is a br
 1. **Create the Scheduler**: Instantiate the `ChronoScheduler` with a time service.
 
     ```csharp
-    var taskScheduler = new ChronoScheduler.ChronoScheduler(new RealTimeService());
+    var chronoScheduler = new ChronoScheduler.ChronoScheduler(new RealTimeService());
     ```
 
 2. **Schedule Tasks**:
@@ -52,7 +52,7 @@ The `ChronoScheduler` class is the core of this scheduling system. Below is a br
     - **Interval Task**: Schedule a task to run at a regular interval.
 
       ```csharp
-      taskScheduler.ScheduleIntervalTask(
+      chronoScheduler.ScheduleIntervalTask(
           new PrintArgsTask(), 
           new PrintArgsTaskArguments(message: "Task 1"), 
           new TimeInterval(hours: 0, minutes: 1)
@@ -62,7 +62,7 @@ The `ChronoScheduler` class is the core of this scheduling system. Below is a br
     - **Time of Day Task**: Schedule a task to run at a specific time of day.
 
       ```csharp
-      taskScheduler.ScheduleTimeOfDayTask(
+      chronoScheduler.ScheduleTimeOfDayTask(
           new PrintArgsTask(), 
           new PrintArgsTaskArguments(message: "Task 2"), 
           new TimeSpan(hours: 14, minutes: 0, seconds: 0)
@@ -72,7 +72,7 @@ The `ChronoScheduler` class is the core of this scheduling system. Below is a br
 3. **Start the Scheduler**: Start the continuous execution of scheduled tasks.
 
     ```csharp
-    taskScheduler.Start();
+    chronoScheduler.Start();
     ```
 
 ### Example Project
