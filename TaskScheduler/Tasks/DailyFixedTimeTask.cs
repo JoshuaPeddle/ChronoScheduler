@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TaskScheduler
+namespace TaskScheduler.Tasks
 {
-    internal class TimeOfDayTask<TArgs> : TimedTask where TArgs : class
+    internal class DailyFixedTimeTask<TArgs> : TimedTask where TArgs : class
     {
         private readonly ITask<TArgs> _task;
         private readonly TArgs _taskArguments;
@@ -10,7 +10,7 @@ namespace TaskScheduler
         private bool _isFirstRun = true;
         private DateTime _lastExecutionDate;
 
-        public TimeOfDayTask(ITask<TArgs> task, TArgs taskArguments, TimeSpan timeOfDay)
+        public DailyFixedTimeTask(ITask<TArgs> task, TArgs taskArguments, TimeSpan timeOfDay)
         {
             _task = task;
             _taskArguments = taskArguments;
@@ -26,6 +26,7 @@ namespace TaskScheduler
                 return currentTime.TimeOfDay >= _timeOfDay;
             }
 
+            _isFirstRun = false;
             bool isAfterTimeOfDay = currentTime.TimeOfDay >= _timeOfDay;
             bool isNewDay = _lastExecutionDate.Date < currentTime.Date;
 

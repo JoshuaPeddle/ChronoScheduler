@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskScheduler
+namespace TaskScheduler.Tasks
 {
     internal class TimedTask
     {

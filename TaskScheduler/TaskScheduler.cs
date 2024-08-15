@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
+using TaskScheduler.Tasks;
 
 namespace TaskScheduler
 {
     public class TaskScheduler
     {
-        private readonly List<TimedTask> _timedTasks = new List<TimedTask>();
+        private readonly List<TimedTask> _tasks = new List<TimedTask>();
         private readonly ITimeService _timeService;
         private readonly int _tickInterval;
 
@@ -17,27 +17,30 @@ namespace TaskScheduler
             _tickInterval = tickInterval;
         }
 
-        public void ScheduleIntervalTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeInterval interval) where TArgs : class
+        public void AddRecurringIntervalTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeInterval interval) where TArgs : class
         {
-            var timeIntervalTask = new TimeIntervalTask<TArgs>(task, taskArguments, interval, _timeService);
-            _timedTasks.Add(timeIntervalTask);
+            _tasks.Add(new RecurringIntervalTask<TArgs>(task, taskArguments, interval, _timeService));
         }
 
-        public void ScheduleTimeOfDayTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeSpan timeOfDay) where TArgs : class
+        public void AddDailyFixedTimeTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeSpan timeOfDay) where TArgs : class
         {
-            var timeOfDayTask = new TimeOfDayTask<TArgs>(task, taskArguments, timeOfDay);
-            _timedTasks.Add(timeOfDayTask);
+            _tasks.Add(new DailyFixedTimeTask<TArgs>(task, taskArguments, timeOfDay));
+        }
+
+        public void AddDailyTimeWindowTask<TArgs>(ITask<TArgs> task, TArgs taskArguments, TimeSpan startTime, TimeSpan endTime) where TArgs : class
+        {
+            _tasks.Add(new DailyTimeWindowTask<TArgs>(task, taskArguments, startTime, endTime));
         }
 
         public void RunSchedulerStep()
         {
             var currentTime = _timeService.Now;
 
-            foreach (var timeTask in _timedTasks)
+            foreach (var task in _tasks)
             {
-                if (timeTask.ShouldExecute(currentTime))
+                if (task.ShouldExecute(currentTime))
                 {
-                    timeTask.Execute(currentTime);
+                    task.Execute(currentTime);
                 }
             }
         }

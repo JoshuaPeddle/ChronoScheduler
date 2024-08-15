@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace TaskScheduler
+namespace TaskScheduler.Tasks
 {
-    internal class TimeIntervalTask<TArgs> : TimedTask where TArgs : class
+    internal class RecurringIntervalTask<TArgs> : TimedTask where TArgs : class
     {
         private readonly ITask<TArgs> _task;
         private readonly TArgs _taskArguments;
         private readonly TimeInterval _interval;
         private DateTime _lastExecutionTime;
 
-        public TimeIntervalTask(ITask<TArgs> task, TArgs taskArguments, TimeInterval interval, ITimeService timeService)
+        public RecurringIntervalTask(ITask<TArgs> task, TArgs taskArguments, TimeInterval interval, ITimeService timeService)
         {
             _task = task;
             _taskArguments = taskArguments;
@@ -19,7 +19,7 @@ namespace TaskScheduler
 
         public override bool ShouldExecute(DateTime currentTime)
         {
-            return (currentTime - _lastExecutionTime) >= _interval.ToTimeSpan();
+            return currentTime - _lastExecutionTime >= _interval.ToTimeSpan();
         }
 
         public override void Execute(DateTime currentTime)
