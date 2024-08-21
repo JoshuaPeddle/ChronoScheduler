@@ -2,7 +2,7 @@
 
 # ChronoScheduler
 
-[![NuGet Version](https://img.shields.io/nuget/v/ChronoScheduler)](https://www.nuget.org/packages/ChronoScheduler)
+
 
 This repository contains a simple yet powerful task-scheduling system.
 
