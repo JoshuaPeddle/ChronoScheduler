@@ -61,9 +61,9 @@
             Assert.That(taskA.HasExecuted, Is.False);
 
             // At 5 AM on the same day, task should not execute 
-            _mockTimeService.AdvanceTime(TimeSpan.FromHours(1));
+            _mockTimeService.AdvanceTime(TimeSpan.FromHours(4));
             _chronoScheduler.RunSchedulerStep();
-            Assert.That(taskA.ExecutionCount, Is.EqualTo(1));
+            Assert.That(taskA.HasExecuted, Is.False);
         }
 
         [Test]
