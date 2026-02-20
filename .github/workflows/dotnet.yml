@@ -2,19 +2,21 @@ name: .NET
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 10.0.x
     - name: Restore dependencies
@@ -24,12 +26,10 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
     - name: Pack
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run: dotnet pack --no-build --configuration Release --output ./nupkgs
+      run: dotnet pack --no-build --configuration Release --output ./nupkgs -p:Version=${{ github.ref_name }}
     - name: Create GitHub Release
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v${{ github.run_number }}
-        name: Release v${{ github.run_number }}
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
         files: ./nupkgs/*.nupkg
