@@ -2,17 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <PackageId>ChronoScheduler.Cron</PackageId>
-    <Version>2.0.0</Version>
-    <Authors>Josh</Authors>
     <Description>Cron expression trigger for ChronoScheduler. Adds .WithCron("0 */2 * * *") to the fluent API.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
     <PackageTags>scheduler;cron;chronoscheduler</PackageTags>
   </PropertyGroup>
 
@@ -21,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cronos" Version="0.8.4" />
+    <PackageReference Include="Cronos" />
   </ItemGroup>
 
 </Project>
-
-

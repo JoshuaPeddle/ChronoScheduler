@@ -2,17 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <PackageId>ChronoScheduler.Store.Redis</PackageId>
-    <Version>2.0.0</Version>
-    <Authors>Josh</Authors>
     <Description>Redis-backed job state store for ChronoScheduler. Persists last-run times so scheduled jobs survive restarts.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
     <PackageTags>scheduler;redis;chronoscheduler;persistence</PackageTags>
   </PropertyGroup>
 
@@ -21,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
+    <PackageReference Include="StackExchange.Redis" />
   </ItemGroup>
 
 </Project>
-
-

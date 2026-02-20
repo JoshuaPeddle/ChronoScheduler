@@ -2,19 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <!-- NuGet package metadata -->
     <PackageId>ChronoScheduler</PackageId>
-    <Version>2.0.0</Version>
-    <Authors>Josh</Authors>
     <Description>A lightweight, zero-dependency task scheduler for .NET with fluent API, async execution, mutex groups, and pluggable persistence.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
     <PackageTags>scheduler;cron;task;job;timer;recurring</PackageTags>
   </PropertyGroup>
 
