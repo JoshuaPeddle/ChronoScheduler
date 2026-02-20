@@ -1,12 +1,18 @@
-## Example output
+# ChronoScheduler.Example
 
-Using time interval of 1 second
-```bash
-Started task scheduler at 2024-08-12 10:09:59 PM
-Task 1 2024-08-12 10:10:59 PM
-Task 2 2024-08-12 10:11:59 PM
-Task 1 2024-08-12 10:12:00 PM
-Task 1 2024-08-12 10:13:00 PM
-Task 2 2024-08-12 10:13:59 PM
-Task 1 2024-08-12 10:14:01 PM
+A simple console application demonstrating ChronoScheduler's fluent API.
+
+## Running
+
+```sh
+dotnet run --project ChronoScheduler.Example
 ```
+
+Press `Ctrl+C` to stop the scheduler gracefully.
+
+## What it does
+
+- Schedules a fast job that runs every 5 seconds
+- Schedules a slow job that runs every 15 seconds in a mutex group
+- Schedules a nightly job that runs between 2–4 AM UTC
+

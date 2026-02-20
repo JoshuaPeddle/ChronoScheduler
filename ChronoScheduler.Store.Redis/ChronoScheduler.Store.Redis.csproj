@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
@@ -7,19 +7,23 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-    <!-- NuGet package metadata -->
-    <PackageId>ChronoScheduler</PackageId>
+    <PackageId>ChronoScheduler.Store.Redis</PackageId>
     <Version>2.0.0</Version>
     <Authors>Josh</Authors>
-    <Description>A lightweight, zero-dependency task scheduler for .NET with fluent API, async execution, mutex groups, and pluggable persistence.</Description>
+    <Description>Redis-backed job state store for ChronoScheduler. Persists last-run times so scheduled jobs survive restarts.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
-    <PackageTags>scheduler;cron;task;job;timer;recurring</PackageTags>
+    <PackageTags>scheduler;redis;chronoscheduler;persistence</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <ProjectReference Include="..\ChronoScheduler\ChronoScheduler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
   </ItemGroup>
 
 </Project>
+
+

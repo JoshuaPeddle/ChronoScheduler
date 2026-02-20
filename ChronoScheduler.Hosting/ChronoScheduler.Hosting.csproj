@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+    <PackageId>ChronoScheduler.Hosting</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>Josh</Authors>
+    <Description>Microsoft.Extensions.Hosting integration for ChronoScheduler. Adds services.AddChronoScheduler() for ASP.NET Core and Generic Host apps.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
+    <PackageTags>scheduler;hosting;aspnetcore;chronoscheduler</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChronoScheduler\ChronoScheduler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
+  </ItemGroup>
+
+</Project>
+
+

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+    <PackageId>ChronoScheduler.Store.EfCore</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>Josh</Authors>
+    <Description>Entity Framework Core job state store for ChronoScheduler. Persists last-run times to any EF Core-supported database.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/your-username/ChronoScheduler</RepositoryUrl>
+    <PackageTags>scheduler;efcore;entityframework;chronoscheduler;persistence</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChronoScheduler\ChronoScheduler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>
+
+
+
+
